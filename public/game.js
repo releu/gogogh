@@ -93,10 +93,10 @@ $(document).ready(function(){
   })
   
   var ws = new WebSocket('ws://0.0.0.0:1666')
-  
+  console.log(ws)
   ws.onmessage = function(e) {
     var data = JSON.parse(e.data)
-    
+    console.log(data)
     game.sendData(data)
     
     $.each(data, function(i, active) {

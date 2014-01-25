@@ -17,21 +17,21 @@ EM.run do
         
         while data = serial.gets(";")
           raw = data.chomp
-          # p raw
-          values = raw.split(",").map { |value| value.to_i >= 1000 }
+          p raw
+          values = raw.split(",").map { |value| value.to_i >= 10 }
           next if values.size != 4
           
           message = values.each_with_index.map do |active, i|
             if active
-              filter[i] = [filter[i] + 1, 20].min
+              filter[i] = [filter[i] + 1, 3].min
             else
               filter[i] = [filter[i] - 2, 0].max
             end
             
-            filter[i] >= 15
+            filter[i] >= 2
           end.to_json
           
-          # p filter
+          p filter
           
           ws.send message
         end
