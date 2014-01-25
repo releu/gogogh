@@ -30,8 +30,6 @@ EM.run do
           filter[i] >= 2
         end.to_json
         
-        p filter
-        
         begin
           ws.send message
         rescue => e

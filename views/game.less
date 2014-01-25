@@ -1,6 +1,12 @@
+html {
+  height: 100%;
+}
 body {
   font-size: 16px;
   font-family: Helvetica;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .screen {
@@ -14,41 +20,62 @@ body {
 }
 
 .promo {
-  text-align: center;
+  background: url("/promo.png") center center;
+}
+
+.gogh-win {
+  background: url("/win-gogh.png") center center;
+}
+
+.ear-win {
+  background: url("/win-ear.png") center center;
 }
 
 .starting {
-  font-size: 92px;
-  text-align: center;
+  &.n-3 {
+    background: url("/starting-3.png") no-repeat center center;
+  }
+  
+  &.n-2 {
+    background: url("/starting-2.png") no-repeat center center;
+  }
+  
+  &.n-1 {
+    background: url("/starting-1.png") no-repeat center center;
+  }
+  
+  &.n-0 {
+    background: url("/starting-go.png") no-repeat center center;
+  }
 }
 
 .player {
-  height: 300px;
+  height: 50%;
   position: relative;
   
   .hero {
     position: absolute;
     left: 0;
     width: 272px;
-    height: 292px;
+    height: 100%;
   }
   
   &.player-1 {
     .hero {
-      background: url("/player-1-1.jpg") no-repeat center center;
+      background: url("/player-1-1.png") no-repeat center center;
       
       &.alt {
-        background: url("/player-1-2.jpg") no-repeat center center;
+        background: url("/player-1-2.png") no-repeat center center;
       }
     }
   }
   
   &.player-2 {
     .hero {
-      background: url("/player-2-1.jpg") no-repeat center center;
+      background: url("/player-2-1.png") no-repeat center center;
       
       &.alt {
-        background: url("/player-2-2.jpg") no-repeat center center;
+        background: url("/player-2-2.png") no-repeat center center;
       }
     }
   }
@@ -59,6 +86,7 @@ table {
   position: fixed;
   bottom: 0;
   left: 0;
+  display: none;
 }
 
 td {

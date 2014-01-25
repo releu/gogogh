@@ -10,21 +10,31 @@ $(document).ready(function(){
       self.state = "starting"
       var startNum = 3
       $(".screen").removeClass("active")
+      $(".screen").removeClass("n-3")
+      $(".screen").removeClass("n-2")
+      $(".screen").removeClass("n-1")
+      $(".screen").removeClass("n-0")
+      $(".screen").removeClass("n--1")
+      $(".starting").show()
       
-      var i = setInterval(function(){
-        $(".starting").addClass("active")
-        $(".starting").text(startNum)
+      var handler = function(){
+        $(".starting").addClass("active").addClass("n-" + startNum)
+        
         startNum = startNum - 1
         if (startNum == -1) {
           clearInterval(i)
+          
+          $(".starting").addClass("active").addClass("n-" + startNum)
           self.run()
         }
-      }, 200)
+      }
+      var i = setInterval(handler, 1000)
+      handler()
     }
     
     self.run = function(){
       self.state = "game"
-      $(".screen").removeClass("active")
+      $(".starting").fadeOut(300)
       $(".race").addClass("active")
     }
     
@@ -36,12 +46,18 @@ $(document).ready(function(){
       self.player1.doStep(data[0], data[1])
       self.player2.doStep(data[2], data[3])
       
-      if (self.player1.position >= 80) {
-        self.renew()
-        self.start()
-      } else if (self.player2.position >= 80) {
-        self.renew()
-        self.start()
+      if ((self.player1.position >= 80) || (self.player2.position >= 80)) {
+        $(".screen").removeClass("active")
+        
+        if (self.player1.position >= 80) {
+          $(".ear-win").addClass("active")
+        } else {
+          $(".gogh-win").addClass("active")
+        }
+        
+        setTimeout(function(){
+          self.renew()
+        }, 5000)
       }
     }
     
@@ -90,13 +106,23 @@ $(document).ready(function(){
     if (e.which == 32) {
       game.start()
     }
+    if (e.which == 97) {
+      game.sendData([true, false, false, false])
+    }
+    if (e.which == 115) {
+      game.sendData([false, true, false, false])
+    }
+    if (e.which == 39) {
+      game.sendData([false, false, true, false])
+    }
+    if (e.which == 92) {
+      game.sendData([false, false, false, true])
+    }
   })
   
   var ws = new WebSocket('ws://0.0.0.0:1666')
-  console.log(ws)
   ws.onmessage = function(e) {
     var data = JSON.parse(e.data)
-    console.log(data)
     game.sendData(data)
     
     $.each(data, function(i, active) {
