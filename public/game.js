@@ -46,10 +46,10 @@ $(document).ready(function(){
       self.player1.doStep(data[0], data[1])
       self.player2.doStep(data[2], data[3])
       
-      if ((self.player1.position >= 80) || (self.player2.position >= 80)) {
+      if ((self.player1.position >= 70) || (self.player2.position >= 70)) {
         $(".screen").removeClass("active")
         
-        if (self.player1.position >= 80) {
+        if (self.player1.position >= 70) {
           $(".ear-win").addClass("active")
         } else {
           $(".gogh-win").addClass("active")
@@ -86,7 +86,7 @@ $(document).ready(function(){
       }
       
       if ((left && self.lastStep != "left") || (right && self.lastStep != "right")){
-        self.position = self.position + 1
+        self.position = self.position + 0.6
         self.hero.toggleClass("alt")
         self.hero.css("left", "" + self.position + "%")
       }
