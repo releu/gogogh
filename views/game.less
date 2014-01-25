@@ -17,19 +17,54 @@ body {
   text-align: center;
 }
 
-.start {
+.starting {
   font-size: 92px;
   text-align: center;
 }
 
+.player {
+  height: 300px;
+  position: relative;
+  
+  .hero {
+    position: absolute;
+    left: 0;
+    width: 272px;
+    height: 292px;
+  }
+  
+  &.player-1 {
+    .hero {
+      background: url("/player-1-1.jpg") no-repeat center center;
+      
+      &.alt {
+        background: url("/player-1-2.jpg") no-repeat center center;
+      }
+    }
+  }
+  
+  &.player-2 {
+    .hero {
+      background: url("/player-2-1.jpg") no-repeat center center;
+      
+      &.alt {
+        background: url("/player-2-2.jpg") no-repeat center center;
+      }
+    }
+  }
+}
+
 table {
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 td {
   width: 25%;
   background: red;
-  height: 500px;
+  height: 50px;
   color: white;
   font-size: 72px;
   text-align: center;
