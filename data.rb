@@ -31,7 +31,7 @@ EM.run do
             filter[i] >= 15
           end.to_json
           
-          p filter
+          # p filter
           
           ws.send message
         end
