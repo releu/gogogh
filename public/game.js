@@ -48,6 +48,7 @@ $(document).ready(function(){
       
       if ((self.player1.position >= 70) || (self.player2.position >= 70)) {
         $(".screen").removeClass("active")
+        self.state = "ending"
         
         if (self.player1.position >= 70) {
           $(".ear-win").addClass("active")
