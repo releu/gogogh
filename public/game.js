@@ -107,16 +107,16 @@ $(document).ready(function(){
     if (e.which == 32) {
       game.start()
     }
-    if (e.which == 97) {
+    if (e.which == 113) {
       game.sendData([true, false, false, false])
     }
-    if (e.which == 115) {
+    if (e.which == 119) {
       game.sendData([false, true, false, false])
     }
-    if (e.which == 39) {
+    if (e.which == 111) {
       game.sendData([false, false, true, false])
     }
-    if (e.which == 92) {
+    if (e.which == 112) {
       game.sendData([false, false, false, true])
     }
   })
