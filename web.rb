@@ -1,4 +1,5 @@
 require "sinatra"
+require "newrelic_rpm"
 require "slim"
 
 class GoGogh < Sinatra::Base
